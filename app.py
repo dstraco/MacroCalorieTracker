@@ -1,5 +1,5 @@
 # Author: David Stracola
-# Project name: Macro Calorie Tracker
+# Project name: Macro Calorie Tracker Web Application
 # File description: Main flask application file
 from flask import Flask, request, render_template, redirect, url_for
 from meal import *
