@@ -105,7 +105,6 @@ def search_food():
             brand = food.get('brand_name', "Generic")
 
 
-
             food_item = Food(food_name= name, nutrients=nutrient_info, brand=brand)
             food_item.parse_nutrients()
             print('\n')

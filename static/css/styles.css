@@ -1,13 +1,11 @@
 h1 {
     font-family: Arial, Helvetica, sans-serif ;
     color: dodgerblue;
-    background-color: ghostwhite;
-    border-radius: 5px;
 }
 body {
     font-family: Arial, sans-serif;
-    color: ghostwhite;
-    background-color: rgb(70, 88, 108);
+    background-color: ghostwhite;
+    
 }
 .macros, .meals, .actions, h2 {
     color: dodgerblue;
@@ -15,16 +13,23 @@ body {
 ul {
     list-style-type: none;
 }
-
-.macro-container, .meals, .actions, .results {
-    background-color: whitesmoke;
+.macro-container {
+    background-color: rgb(197, 209, 226);
     color: darkslategrey;
     margin: 20px;
     padding: 10px;
-    border: 4px solid ;
-    border-color: whitesmoke;
-    border-radius: 10px;
+    width: 25%;
+    border-radius: 25px;   
 }
+.meals, .actions, .results {
+    background-color: rgb(197, 209, 226);
+    color: darkslategrey;
+    margin: 20px;
+    padding: 10px;
+    width: 50%;
+    border-radius: 10px;   
+}
+
 .macros h2, .meals h2, .actions h2 {
     margin-top: 0;
 }
@@ -33,7 +38,6 @@ ul {
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
-
 }
 .meal h3{
     color: dodgerblue;
@@ -51,7 +55,6 @@ ul {
 .button:hover {
     background-color: #0056b3;
 }
-
 .delete_button {
     display: inline-block;
     padding: 10px 14px;
@@ -65,8 +68,6 @@ ul {
     font-weight: bold;
     width: min-content;
     height: min-content;
-
-
 }
 .delete_button:hover {
     background-color: #00bbcf;
@@ -76,7 +77,31 @@ ul {
     border-radius: 10px;
 
 }
-
 .add-food-buttons {
     display: inline-flex;
 }
+/* new */
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: rgb(197, 209, 226);
+    width: 30%;
+    display: inline-flex;
+    margin: 10px;
+  }
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(131, 130, 130, 0.8);
+  }
+  /* Add some padding inside the card container */
+  .container {
+    padding: 5px 16px;
+    border-color: rgb(214, 214, 214);
+    margin: 10px;
+    color: rgb(63, 63, 63);
+  }
+  .meal-cards h2 {
+    color: ghostwhite;
+   
+  }

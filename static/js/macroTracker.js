@@ -3,6 +3,8 @@ daily_calories = document.getElementById('daily-calories');
 daily_protein = document.getElementById('daily-protein');
 daily_carbs = document.getElementById('daily-carbs');
 daily_fat = document.getElementById('daily-fat');
+meal_containers = document.getElementsByClassName('container');
+
 
 // Script for index.html
 if (document.querySelector('h1').innerText === 'Big 3 Calorie and Macro tracker') {
@@ -21,7 +23,7 @@ if (document.querySelector('h1').innerText === 'Big 3 Calorie and Macro tracker'
     document.addEventListener('DOMContentLoaded', getMeals);
 }
 
-function calculate_macros(meals) {
+function calculateDailyMacros(meals) {
 
     console.log('Calculating macros')
     console.log(meals);
@@ -54,9 +56,49 @@ function calculate_macros(meals) {
 // this fucntion will become update UI
 function updateUI(meals) {
 
-    let macros = calculate_macros(meals);
+    let macros = calculateDailyMacros(meals);
     daily_calories.textContent = `Calories: ${macros.total_calories} kcal`;
     daily_protein.textContent = `Protein: ${macros.total_protein} g`;
     daily_carbs.textContent = `Carbs: ${macros.total_carbs} g`;
     daily_fat.textContent = `Fat: ${macros.total_fat} g`;
+
+    calculateMealMacros('Breakfast', meals);
+    calculateMealMacros('Lunch', meals);
+    calculateMealMacros('Dinner', meals);
+    calculateMealMacros('Snacks', meals);
+
+}
+function calculateMealMacros(meal, meals) {
+    let meal_protein = 0;
+    let meal_carbs = 0;
+    let meal_fat = 0;
+
+    for (let food in meals[meal]) {
+        meal_protein += meals[meal][food].protein;
+        meal_carbs += meals[meal][food].carbs;
+        meal_fat += meals[meal][food].fat;
+    }
+
+    meal_calories =  Math.round(meal_protein * 4 + meal_carbs * 4 + meal_fat * 9);
+    if (meal === 'Breakfast') {
+        document.getElementById('breakfast-protein').textContent = `Protein: ${meal_protein} g`;
+        document.getElementById('breakfast-carbs').textContent = `Carbs: ${meal_carbs} g`;
+        document.getElementById('breakfast-fat').textContent = `Fat: ${meal_fat} g`;
+        document.getElementById('breakfast-calories').textContent = `Calories: ${meal_calories} kcal`;
+    } else if (meal === 'Lunch') {
+        document.getElementById('lunch-protein').textContent = `Protein: ${meal_protein} g`;
+        document.getElementById('lunch-carbs').textContent = `Carbs: ${meal_carbs} g`;
+        document.getElementById('lunch-fats').textContent = `Fat: ${meal_fat} g`;
+        document.getElementById('lunch-calories').textContent = `Calories: ${meal_calories} kcal`;
+    } else if (meal === 'Dinner') {
+        document.getElementById('dinner-protein').textContent = `Protein: ${meal_protein} g`;
+        document.getElementById('dinner-carbs').textContent = `Carbs: ${meal_carbs} g`;
+        document.getElementById('dinner-fat').textContent = `Fat: ${meal_fat} g`;
+        document.getElementById('dinner-calories').textContent = `Calories: ${meal_calories} kcal`;
+    } else if (meal === 'Snacks') {
+        document.getElementById('snacks-protein').textContent = `Protein: ${meal_protein} g`;
+        document.getElementById('snacks-carbs').textContent = `Carbs: ${meal_carbs} g`;
+        document.getElementById('snacks-fat').textContent = `Fat: ${meal_fat} g`;
+        document.getElementById('snacks-calories').textContent = `Calories: ${meal_calories} kcal`;
+    }
 }

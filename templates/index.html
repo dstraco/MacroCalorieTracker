@@ -12,17 +12,58 @@
     <h1>Big 3 Calorie and Macro tracker</h1>
     <div class="macro-container" id="daily-macros">
         <h2>Daily Macros</h2>
-        <p id = daily-protein>Protein: g</p>
-        <p id = daily-carbs>Carbs:  g</p>
-        <p id = daily-fat>Fats:  g</p>
-        <p id = daily-calories>Calories: kcal</p>
+        <p id=daily-protein>Protein: g</p>
+        <p id=daily-carbs>Carbs: g</p>
+        <p id=daily-fat>Fats: g</p>
+        <p id=daily-calories>Calories: kcal</p>
     </div>
-    <div class="add-food-buttons">
-        <a href="{{ url_for('search_food') }}" class="button">Food Search</a>
-        <a href="{{ url_for('add_food') }}" class="button">Manual Entry</a>
-    </div>
-    <div class="meals">
-        <a href="{{ url_for('show_meals') }}" class="button">Show foods</a>
+    <main>
+        <div class="add-food-buttons">
+            <a href="{{ url_for('search_food') }}" class="button">Food Search</a>
+            <a href="{{ url_for('add_food') }}" class="button">Manual Entry</a>
+            <a href="{{ url_for('show_meals') }}" class="button">Show foods</a>
+        </div>
+
+        <div class="meal-cards">
+            <h2>Meals</h2>
+            <div class="card">
+                <div class="container" id="breakfast-container">
+                    <h3>Breakfast</h3>
+                    <p id=breakfast-protein>Protein: g</p>
+                    <p id=breakfast-carbs>Carbs: g</p>
+                    <p id=breakfast-fat>Fats: g</p>
+                    <p id=breakfast-calories>Calories: kcal</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="container" id="lunch-container">
+                    <h3>Lunch</h3>
+                    <p id=lunch-protein>Protein: g</p>
+                    <p id=lunch-carbs>Carbs: g</p>
+                    <p id=lunch-fats>Fats: g</p>
+                    <p id=lunch-calories>Calories: kcal</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="container" id="dinner-container">
+                    <h3>Dinner</h3>
+                    <p id=dinner-protein>Protein: g</p>
+                    <p id=dinner-carbs>Carbs: g</p>
+                    <p id=dinner-fat>Fats: g</p>
+                    <p id=dinner-calories>Calories: kcal</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="container" id="snacks-container">
+                    <h3>Snacks</h3>
+                    <p id=snacks-protein>Protein: g</p>
+                    <p id=snacks-carbs>Carbs: g</p>
+                    <p id=snacks-fat>Fats: g</p>
+                    <p id=snacks-calories>Calories: kcal</p>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="meals">
         <ul>
             <h2>Meals</h2>
             {% if not meals %}
@@ -41,8 +82,8 @@
             {% endfor %}
             {% endif %}
         </ul>
-    </div>
-
+    </div> -->
+    </main>
     <footer>
         <a href="https://www.fatsecret.com">
             <img src="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret.png" srcset="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_2x.png
