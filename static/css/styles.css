@@ -1,0 +1,82 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif ;
+    color: dodgerblue;
+    background-color: ghostwhite;
+    border-radius: 5px;
+}
+body {
+    font-family: Arial, sans-serif;
+    color: ghostwhite;
+    background-color: rgb(70, 88, 108);
+}
+.macros, .meals, .actions, h2 {
+    color: dodgerblue;
+}
+ul {
+    list-style-type: none;
+}
+
+.macro-container, .meals, .actions, .results {
+    background-color: whitesmoke;
+    color: darkslategrey;
+    margin: 20px;
+    padding: 10px;
+    border: 4px solid ;
+    border-color: whitesmoke;
+    border-radius: 10px;
+}
+.macros h2, .meals h2, .actions h2 {
+    margin-top: 0;
+}
+.meal {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.meal h3{
+    color: dodgerblue;
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.button:hover {
+    background-color: #0056b3;
+}
+
+.delete_button {
+    display: inline-block;
+    padding: 10px 14px;
+    margin: 5px;
+    color: #fff;
+    background-color: #00bbff;
+    border-color: whitesmoke;
+    border: 2px solid;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    width: min-content;
+    height: min-content;
+
+
+}
+.delete_button:hover {
+    background-color: #00bbcf;
+}
+
+.meal-select {
+    border-radius: 10px;
+
+}
+
+.add-food-buttons {
+    display: inline-flex;
+}

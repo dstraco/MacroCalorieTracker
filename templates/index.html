@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big 3 Calorie and Macro Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <h1>Big 3 Calorie and Macro tracker</h1>
+    <div class="macro-container" id="daily-macros">
+        <h2>Daily Macros</h2>
+        <p id = daily-protein>Protein: g</p>
+        <p id = daily-carbs>Carbs:  g</p>
+        <p id = daily-fat>Fats:  g</p>
+        <p id = daily-calories>Calories: kcal</p>
+    </div>
+    <div class="add-food-buttons">
+        <a href="{{ url_for('search_food') }}" class="button">Food Search</a>
+        <a href="{{ url_for('add_food') }}" class="button">Manual Entry</a>
+    </div>
+    <div class="meals">
+        <a href="{{ url_for('show_meals') }}" class="button">Show foods</a>
+        <ul>
+            <h2>Meals</h2>
+            {% if not meals %}
+            <p> No meals to show </p>
+            {% else %}
+            {% for meal in meals %}
+            <div class="meal">
+                <li>
+                    <h3>{{ meal.get_name() }}</h3>
+                    <p>Protein: {{ meal.get_protein() }} g</p>
+                    <p>Carbs: {{ meal.get_carbs() }} g</p>
+                    <p>Fats: {{ meal.get_fats() }} g</p>
+                    <p>Calories: {{ meal.get_calories() }} kcal</p>
+                </li>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+
+    <footer>
+        <a href="https://www.fatsecret.com">
+            <img src="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret.png" srcset="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_2x.png
+         2x, https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_3x.png 3x" border="0" />
+        </a>
+    </footer>
+    <script src="../static/js/macroTracker.js"></script>
+</body>
+
+</html>
