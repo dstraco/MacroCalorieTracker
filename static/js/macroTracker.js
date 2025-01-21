@@ -68,6 +68,7 @@ function updateUI(meals) {
     calculateMealMacros('Snacks', meals);
 
 }
+
 function calculateMealMacros(meal, meals) {
     let meal_protein = 0;
     let meal_carbs = 0;
@@ -79,26 +80,18 @@ function calculateMealMacros(meal, meals) {
         meal_fat += meals[meal][food].fat;
     }
 
-    meal_calories =  Math.round(meal_protein * 4 + meal_carbs * 4 + meal_fat * 9);
-    if (meal === 'Breakfast') {
-        document.getElementById('breakfast-protein').textContent = `Protein: ${meal_protein} g`;
-        document.getElementById('breakfast-carbs').textContent = `Carbs: ${meal_carbs} g`;
-        document.getElementById('breakfast-fat').textContent = `Fat: ${meal_fat} g`;
-        document.getElementById('breakfast-calories').textContent = `Calories: ${meal_calories} kcal`;
-    } else if (meal === 'Lunch') {
-        document.getElementById('lunch-protein').textContent = `Protein: ${meal_protein} g`;
-        document.getElementById('lunch-carbs').textContent = `Carbs: ${meal_carbs} g`;
-        document.getElementById('lunch-fats').textContent = `Fat: ${meal_fat} g`;
-        document.getElementById('lunch-calories').textContent = `Calories: ${meal_calories} kcal`;
-    } else if (meal === 'Dinner') {
-        document.getElementById('dinner-protein').textContent = `Protein: ${meal_protein} g`;
-        document.getElementById('dinner-carbs').textContent = `Carbs: ${meal_carbs} g`;
-        document.getElementById('dinner-fat').textContent = `Fat: ${meal_fat} g`;
-        document.getElementById('dinner-calories').textContent = `Calories: ${meal_calories} kcal`;
-    } else if (meal === 'Snacks') {
-        document.getElementById('snacks-protein').textContent = `Protein: ${meal_protein} g`;
-        document.getElementById('snacks-carbs').textContent = `Carbs: ${meal_carbs} g`;
-        document.getElementById('snacks-fat').textContent = `Fat: ${meal_fat} g`;
-        document.getElementById('snacks-calories').textContent = `Calories: ${meal_calories} kcal`;
-    }
+    meal_calories = Math.round(meal_protein * 4 + meal_carbs * 4 + meal_fat * 9);
+
+    const mealElements = {
+        'Breakfast': 'breakfast',
+        'Lunch': 'lunch',
+        'Dinner': 'dinner',
+        'Snacks': 'snacks'
+    };
+    
+    document.getElementById(`${mealElements[meal]}-protein`).textContent = `Protein: ${meal_protein} g`;
+    document.getElementById(`${mealElements[meal]}-carbs`).textContent = `Carbs: ${meal_carbs} g`;
+    document.getElementById(`${mealElements[meal]}-fat`).textContent = `Fat: ${meal_fat} g`;
+    document.getElementById(`${mealElements[meal]}-calories`).textContent = `Calories: ${meal_calories} kcal`;
+    
 }
