@@ -1,7 +1,7 @@
 h1 {
     font-family: Arial, sans-serif;
     color: ghostwhite;
-    background-color: dodgerblue;
+    background-color: rgb(43, 123, 202);
 }
 .meals-h2 {
     color: rgb(81, 120, 160);
@@ -51,7 +51,7 @@ ul {
     padding: 10px 20px;
     margin: 5px;
     color: #fff;
-    background-color: #007bff;
+    background-color: #3a86d8;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
