@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Search</title>
-    <link rel = "stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-    <div class="actions">
-    <h1>Search for Food</h1>
-    <form action="{{ url_for('search_food') }}" method="post">
-        <label for="meal-select">Choose a meal:</label>
-        <select id="meal-select" name="meal_name">
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-            <option value="Snacks">Snack</option>
-        </select>
-        <label for="food_query">Food name:</label>
-        <input type="text" id="food_query" name="food_query" placeholder="ex. large egg"required><br><br>
-        <input type="submit" value="Search" class = 'button'>
-    </form>
-    </div>
 
-    <a href="{{ url_for('index') }}" class="button">Go home</a>
+<body>
+    <main>
+        <div class="actions">
+            <h1>Search for Food</h1>
+            <form action="{{ url_for('search_food') }}" method="post">
+                <label for="meal-select">Choose a meal:</label>
+                <select id="meal-select" name="meal_name">
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snacks">Snack</option>
+                </select>
+                <label for="food_query">Food name:</label>
+                <input type="text" id="food_query" name="food_query" placeholder="ex. large egg" required><br><br>
+                <input type="submit" value="Search" class='button'>
+            </form>
+        </div>
+
+        <a href="{{ url_for('index') }}" class="button">Go home</a>
+    </main>
     <footer>
-    <a href="https://www.fatsecret.com">
-    <img src="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret.png"
-         srcset="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_2x.png
-         2x, https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_3x.png 3x" border="0"/>
-    </a>
+        <a href="https://www.fatsecret.com">
+            <img src="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret.png" srcset="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_2x.png
+            2x, https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_3x.png 3x" border="0" />
+        </a>
     </footer>
 </body>
+
 </html>

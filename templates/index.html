@@ -9,23 +9,26 @@
 </head>
 
 <body>
-    <h1>Big 3 Calorie and Macro tracker</h1>
-    <div class="macro-container" id="daily-macros">
-        <h2>Daily Macros</h2>
-        <p id=daily-protein>Protein: g</p>
-        <p id=daily-carbs>Carbs: g</p>
-        <p id=daily-fat>Fats: g</p>
-        <p id=daily-calories>Calories: kcal</p>
-    </div>
+    <header>
+        <h1>Big 3 Calorie and Macro tracker</h1>
+    </header>
     <main>
-        <div class="add-food-buttons">
-            <a href="{{ url_for('search_food') }}" class="button">Food Search</a>
-            <a href="{{ url_for('add_food') }}" class="button">Manual Entry</a>
-            <a href="{{ url_for('show_meals') }}" class="button">Show foods</a>
+        <div class="macro-container" id="daily-macros">
+            <h2>Daily Macros</h2>
+            <p id=daily-protein>Protein: g</p>
+            <p id=daily-carbs>Carbs: g</p>
+            <p id=daily-fat>Fats: g</p>
+            <p id=daily-calories>Calories: kcal</p>
         </div>
-
+        <nav>
+            <div class="add-food-buttons">
+                <a href="{{ url_for('search_food') }}" class="button">Food Search</a>
+                <a href="{{ url_for('add_food') }}" class="button">Manual Entry</a>
+                <a href="{{ url_for('show_meals') }}" class="button">Show foods</a>
+            </div>
+        </nav>
+        <h2 class="meals-h2">Meals</h2>
         <div class="meal-cards">
-            <h2>Meals</h2>
             <div class="card">
                 <div class="container" id="breakfast-container">
                     <h3>Breakfast</h3>

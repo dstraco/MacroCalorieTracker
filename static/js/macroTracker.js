@@ -93,5 +93,4 @@ function calculateMealMacros(meal, meals) {
     document.getElementById(`${mealElements[meal]}-carbs`).textContent = `Carbs: ${meal_carbs} g`;
     document.getElementById(`${mealElements[meal]}-fat`).textContent = `Fat: ${meal_fat} g`;
     document.getElementById(`${mealElements[meal]}-calories`).textContent = `Calories: ${meal_calories} kcal`;
-    
 }

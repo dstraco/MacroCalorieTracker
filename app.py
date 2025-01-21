@@ -23,7 +23,7 @@ def index():
     total_fats = sum(meal.get_fats() for meal in meals)
     total_calories = sum(meal.get_calories() for meal in meals)
     
-    return render_template('index.html', meals=meals)
+    return render_template('index.html')
 
 @app.route('/add_food', methods=['GET', 'POST'])
 def add_food():

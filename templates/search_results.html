@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <link rel = "stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
-    <div class="results">
-        <h1>Search Results</h1>
-        {% for food in food_data %}
-        <ul>
-            <h2>{{ food.get_brand() }}, {{ food.get_name() }}</h2>
-            <form action = "/select_food" method = 'POST'>
-                <input type = "hidden" name = "meal_name" value = {{ meal }}>
-                  <label for  = "serving_{{food.get_name() }}">Choose a serving:</label>
-                  <select name="food_data" id ="serving_{{food.get_name() }}">
-                      {% for description in food.get_serving_info() %}
-                      <option value="{{ food.get_serving_info(description) }}">{{ description }}</option>
-                      {% endfor %}
-                  </select>
-                <input type="hidden" name="food_name" value="{{ food.get_name() }}">
-                  <button type="submit">Select Serving</button>
-            </form>
-            {% for serving in food.get_serving_info().values() %}
+    <main>
+        <div class="results">
+            <h1>Search Results</h1>
+            {% for food in food_data %}
+            <ul>
+                <h2>{{ food.get_brand() }}, {{ food.get_name() }}</h2>
+                <form action="/select_food" method='POST'>
+                    <input type="hidden" name="meal_name" value={{ meal }}>
+                    <label for="serving_{{food.get_name() }}">Choose a serving:</label>
+                    <select name="food_data" id="serving_{{food.get_name() }}">
+                        {% for description in food.get_serving_info() %}
+                        <option value="{{ food.get_serving_info(description) }}">{{ description }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="hidden" name="food_name" value="{{ food.get_name() }}">
+                    <button type="submit">Select Serving</button>
+                </form>
+                {% for serving in food.get_serving_info().values() %}
                 <br>
                 {% for key in serving %}
-                    <li> {{ key }}: {{ serving.get(key) }}</li>
+                <li> {{ key }}: {{ serving.get(key) }}</li>
                 {% endfor %}
+                {% endfor %}
+            </ul>
             {% endfor %}
-        </ul>
-        {% endfor %}
-    </div>
+        </div>
+    </main>
     <footer>
-    <a href="https://www.fatsecret.com">
-    <img src="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret.png"
-         srcset="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_2x.png
-         2x, https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_3x.png 3x" border="0"/>
-    </a>
+        <a href="https://www.fatsecret.com">
+            <img src="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret.png" srcset="https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_2x.png
+         2x, https://platform.fatsecret.com/api/static/images/powered_by_fatsecret_3x.png 3x" border="0" />
+        </a>
     </footer>
 </body>
 </html>
