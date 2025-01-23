@@ -18,11 +18,7 @@ meals.append(Meal("Snacks"))
 
 @app.route('/', methods=['GET'])
 def index():
-    total_protein = sum(meal.get_protein() for meal in meals)
-    total_carbs = sum(meal.get_carbs() for meal in meals)
-    total_fats = sum(meal.get_fats() for meal in meals)
-    total_calories = sum(meal.get_calories() for meal in meals)
-    
+
     return render_template('index.html')
 
 @app.route('/add_food', methods=['GET', 'POST'])
