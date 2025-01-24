@@ -117,3 +117,8 @@ ul {
   footer {
     margin: 3%;
   }
+
+  /* show_meals.html formatting */
+  .container li{
+    margin-top: 7px;
+  }

@@ -4,40 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <title>View Meals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 
 <body>
     <main>
         <h1>Meals and Foods</h1>
-        {% if not meals %}
-        <p> No meals to show </p>
-        {% endif %}
-        {% for meal in meals %}
-        <div class="meals">
-            <h2>{{ meal.get_name() }}</h2>
-            <h3>Foods</h3>
-            <ul>
-                {% for food in meal.show_foods() %}
-                <li>
-                    <h4>{{ food.get_name() }}</h4>
-                    <form action="{{ url_for('remove_food') }}" method="POST">
-                        <input type="hidden" name="item_id" value="{{ food.get_id() }}">
-                        <button class="delete_button" type="submit">Remove</button>
-                    </form>
-                    <p>Protein: {{ food.get_protein() }} g</p>
-                    <p>Carbs: {{ food.get_carbs() }} g</p>
-                    <p>Fats: {{ food.get_fats() }} g</p>
-                    <p>Calories: {{ food.get_calories() }} kcal</p>
-                </li>
-                {% endfor %}
-            </ul>
+        <div class="card" id="meals-foods-list">
+            <div class="container" id="breakfast-container">
+                <p>Breakfast</p>
+                <ul id = 'breakfast-foods'>
+
+                </ul>
+            </div>
         </div>
-        {% endfor %}
+        <div class="card">
+            <div class="container" id="lunch-container">
+                <p>Lunch</p>
+                <ul id = 'lunch-foods'>
+
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="container" id="dinner-container">
+                <p>Dinner</p>
+                <ul id = 'dinner-foods'>
+
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="container" id="snacks-container">
+                <p>Snacks</p>
+                <ul id = 'snack-foods'>
+
+                </ul>
+            </div>
+        </div>
+        
     </main>
     <footer>
         <a href="{{ url_for('index') }}" class="button">Go home</a>
     </footer>
+    <script src="../static/js/macroTracker.js"></script>
 </body>
 
 </html>

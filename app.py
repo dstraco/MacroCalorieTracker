@@ -150,5 +150,18 @@ def get_meals():
 
     return meal_dict
 
+@app.route('/api/meals/<meal_name>/<food_name>', methods=['DELETE'])
+def delete_food(meal_name, food_name):
+
+    for meal in meals: 
+        if meal.get_name().lower() == meal_name:
+            food_list = meal.get_foodlst()
+            for food in food_list:
+                if food.get_name() == food_name:
+                    food_list.remove(food)
+                    return jsonify({"message": "Food item deleted"}), 200
+    return jsonify({"error": "Food item not found"}), 404
+
 if __name__ == '__main__':
     app.run(debug=True)
+    
