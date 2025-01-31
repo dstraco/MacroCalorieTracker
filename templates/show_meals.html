@@ -11,42 +11,46 @@
 <body>
     <main>
         <h1>Meals and Foods</h1>
-        <div class="card" id="meals-foods-list">
-            <div class="container" id="breakfast-container">
-                <p>Breakfast</p>
-                <ul id = 'breakfast-foods'>
+        <div id="meals-foods-list">
+            <div class="card" >
+                <div class="container" id="breakfast-container">
+                    <p>Breakfast</p>
+                    <ul id = 'breakfast-foods'>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="container" id="lunch-container">
-                <p>Lunch</p>
-                <ul id = 'lunch-foods'>
+            <div class="card">
+                <div class="container" id="lunch-container">
+                    <p>Lunch</p>
+                    <ul id = 'lunch-foods'>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="container" id="dinner-container">
-                <p>Dinner</p>
-                <ul id = 'dinner-foods'>
+            <div class="card">
+                <div class="container" id="dinner-container">
+                    <p>Dinner</p>
+                    <ul id = 'dinner-foods'>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="container" id="snacks-container">
-                <p>Snacks</p>
-                <ul id = 'snack-foods'>
+            <div class="card">
+                <div class="container" id="snacks-container">
+                    <p>Snacks</p>
+                    <ul id = 'snack-foods'>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
         
     </main>
     <footer>
-        <a href="{{ url_for('index') }}" class="button">Go home</a>
+        <a href="{{ url_for('index') }}">
+            <button>Go home</button>
+        </a>
     </footer>
     <script src="../static/js/macroTracker.js"></script>
 </body>

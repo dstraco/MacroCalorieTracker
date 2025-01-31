@@ -24,7 +24,7 @@
                         {% endfor %}
                     </select>
                     <input type="hidden" name="food_name" value="{{ food.get_name() }}">
-                    <button type="submit">Select Serving</button>
+                    <button>Select Serving</button>
                 </form>
                 {% for serving in food.get_serving_info().values() %}
                 <br>

@@ -21,14 +21,19 @@
             <p id=daily-calories>Calories: 0 kcal</p>
         </div>
         <nav>
-            <div class="add-food-buttons">
-                <a href="{{ url_for('search_food') }}" class="button">Food Search</a>
-                <a href="{{ url_for('add_food') }}" class="button">Manual Entry</a>
-                <a href="{{ url_for('show_meals') }}" class="button">Show foods</a>
-            </div>
+            <a href="{{ url_for('search_food') }}">
+                <button>Food Search</button>
+            </a>
+            <a href="{{ url_for('add_food') }}">
+                <button>Manual Entry</button>
+            </a>
+            <a href="{{ url_for('show_meals') }}">
+                <button>Show foods</button>
+            </a>
         </nav>
-        <h2 class="meals-h2">Meals</h2>
+    
         <div class="meal-cards">
+            <h2 class="meals-h2">Meals</h2>
             <div class="card">
                 <div class="container" id="breakfast-container">
                     <h3>Breakfast</h3>

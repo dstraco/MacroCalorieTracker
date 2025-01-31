@@ -6,6 +6,16 @@ daily_fat = document.getElementById('daily-fat');
 meal_containers = document.getElementsByClassName('container');
 foodList = document.getElementById('meals-foods-list');
 
+let total_calories = 0;
+let total_protein = 0;
+let total_carbs = 0;
+let total_fat = 0;
+let total_fiber = 0;
+let total_sugar = 0;
+let total_sodium = 0;
+let total_cholesterol = 0;
+let total_saturated_fat = 0;
+
 // Script for index.html
 if (document.querySelector('h1').innerText === 'Big 3 Calorie and Macro tracker') {
 
@@ -56,7 +66,6 @@ async function removeFoodFromBackend(meal, foodName) {
 }
 
 function updateUI(meals) {
-
     let macros = calculateDailyMacros(meals);
     daily_calories.textContent = `Calories: ${macros.total_calories} kcal`;
     daily_protein.textContent = `Protein: ${macros.total_protein} g`;
@@ -70,17 +79,6 @@ function updateUI(meals) {
 }
 // Update UI helper functions
 function calculateDailyMacros(meals) {
-    console.log('Calculating macros')
-    let total_calories = 0;
-    let total_protein = 0;
-    let total_carbs = 0;
-    let total_fat = 0;
-    let total_fiber = 0;
-    let total_sugar = 0;
-    let total_sodium = 0;
-    let total_cholesterol = 0;
-    let total_saturated_fat = 0;
-
     for (let meal in meals) {
         for (let food in meals[meal]) {
             total_protein += meals[meal][food].protein;
@@ -96,7 +94,6 @@ function calculateDailyMacros(meals) {
     }
     return { "total_calories": total_calories, "total_protein": total_protein, "total_carbs": total_carbs, "total_fat": total_fat, "total_fiber": total_fiber, "total_sugar": total_sugar, "total_sodium": total_sodium, "total_cholesterol": total_cholesterol, "total_saturated_fat": total_saturated_fat };
 }
-
 function calculateMealMacros(meal, meals) {
     let meal_protein = 0;
     let meal_carbs = 0;
@@ -107,23 +104,21 @@ function calculateMealMacros(meal, meals) {
         meal_carbs += meals[meal][food].carbs;
         meal_fat += meals[meal][food].fat;
     }
-
     meal_calories = Math.round(meal_protein * 4 + meal_carbs * 4 + meal_fat * 9);
-
     const mealElements = {
         'Breakfast': 'breakfast',
         'Lunch': 'lunch',
         'Dinner': 'dinner',
         'Snacks': 'snacks'
     };
-    
+
     document.getElementById(`${mealElements[meal]}-protein`).textContent = `Protein: ${meal_protein} g`;
     document.getElementById(`${mealElements[meal]}-carbs`).textContent = `Carbs: ${meal_carbs} g`;
     document.getElementById(`${mealElements[meal]}-fat`).textContent = `Fat: ${meal_fat} g`;
     document.getElementById(`${mealElements[meal]}-calories`).textContent = `Calories: ${meal_calories} kcal`;
 }
 // Functions below are specific for show_meals.html
-function displayFoods(meals){
+function displayFoods(meals) {
     const mealElements = {
         'Breakfast': 'breakfast',
         'Lunch': 'lunch',
@@ -131,52 +126,47 @@ function displayFoods(meals){
         'Snacks': 'snacks'
     };
 
-    let total_calories = 0;
-    let total_protein = 0;
-    let total_carbs = 0;
-    let total_fat = 0;
-    let total_fiber = 0;
-    let total_sugar = 0;
-    let total_sodium = 0;
-    let total_cholesterol = 0;
-    let total_saturated_fat = 0;
-    
-    for(let meal in meals) {
+    for (let meal in meals) {
         const currentMeal = document.getElementById(`${mealElements[meal]}-foods`);
-        for(let food in meals[meal]) {
-            total_protein += meals[meal][food].protein;
-            total_carbs += meals[meal][food].carbs;
-            total_fat += meals[meal][food].fat;
-            total_fiber += meals[meal][food].fiber;
-            total_sugar += meals[meal][food].sugar;
-            total_sodium += meals[meal][food].sodium;
-            total_cholesterol += meals[meal][food].cholesterol;
-            total_saturated_fat += meals[meal][food].saturated_fat;
-            total_calories = Math.round(total_protein * 4 + total_carbs * 4 + total_fat * 9);
+        for (let food in meals[meal]) {
             mealName = mealElements[meal];
-
-            const newItem = createFoodItem(meals[meal][food].name, mealName); 
-               
-            currentMeal.appendChild(newItem);
+            const foodDetails = getFoodDetails(meals[meal][food])
             
+            const newItem = createFoodItem(meals[meal][food].name, mealName, foodDetails);
+            currentMeal.appendChild(newItem);
         }
     }
     console.log(meals.keys);
 }
 // Helper function for displayFoods
-function createFoodItem(foodName, meal){
+function createFoodItem(foodName, meal, foodDetails) {
     const li = document.createElement('li');
     li.appendChild(document.createTextNode(foodName));
     li.setAttribute('data-meal', meal);
     li.setAttribute('data-food', foodName);
+
     const deleteButton = createButton('remove-item-btn', 'fas fa-trash');
     const expandButton = createButton('expand-btn', 'fas fa-chevron-down');
+    expandButton.addEventListener('click', toggleFoodDetails);
+
     li.appendChild(deleteButton);
     li.appendChild(expandButton);
+
+    const detailsDiv = document.createElement('div');
+    detailsDiv.className = 'food-details';
+    detailsDiv.style.display = 'none'; // Hidden until expanded by user
+    detailsDiv.innerHTML = `
+        <p>Protein: ${foodDetails.protein} g</p>
+        <p>Carbs: ${foodDetails.carbs} g</p>
+        <p>Fat: ${foodDetails.fat} g</p>
+        <p>Calories: ${foodDetails.calories} g</p>
+    `;
+    li.appendChild(detailsDiv);
+
     return li;
 }
 // Called inside createFoodItem
-function createButton(classes, iconClass){
+function createButton(classes, iconClass) {
     const button = document.createElement('button');
     button.className = classes;
     const icon = document.createElement('i');
@@ -184,13 +174,13 @@ function createButton(classes, iconClass){
     button.appendChild(icon);
     return button;
 }
-async function removeFood(e){
-    if(e.target.classList.contains('remove-item-btn') || e.target.parentElement.classList.contains('remove-item-btn')) {
+async function removeFood(e) {
+    if (e.target.classList.contains('remove-item-btn') || e.target.parentElement.classList.contains('remove-item-btn')) {
         console.log('trash works');
         const li = e.target.closest('li');
         const meal = li.getAttribute('data-meal');
         const foodName = li.getAttribute('data-food');
-        console.log(meal);   
+        console.log(meal);
         // Remove the food item from the backend with API call
         const success = await removeFoodFromBackend(meal, foodName);
         // Remove the food item from the dom
@@ -200,8 +190,41 @@ async function removeFood(e){
         }
     }
 }
+function getFoodDetails(food) {
+            let protein = food.protein;
+            let carbs = food.carbs;
+            let fat = food.fat;
+            let fiber = food.fiber;
+            let sugar = food.sugar;
+            let sodium = food.sodium;
+            let cholesterol = food.cholesterol;
+            let saturated_fat = food.saturated_fat;
+            let calories = Math.round(total_protein * 4 + total_carbs * 4 + total_fat * 9);
 
+            const foodDetails = {
+                'protein': protein,
+                'carbs': carbs,
+                'fat': fat,
+                'fiber': fiber,
+                'sugar': sugar,
+                'sodium': sodium,
+                'cholesterol': cholesterol,
+                'saturated_fat': saturated_fat,
+                'calories': calories,
+            }
+            return foodDetails;
+}
+function toggleFoodDetails(e) {
+    const detailsDiv = e.target.closest('li').querySelector('.food-details');
+    if (detailsDiv.style.display === 'none') {
+        detailsDiv.style.display = 'block';
+        e.target.className = 'fas fa-chevron-up'; // Change icon to show expanded details
+        console.log(e.target);
+    } else {
+        detailsDiv.style.display = 'none';
+        e.target.className = 'fas fa-chevron-down'; // Chevron points down when not expanded
+    }
+}
 function initShowMeals() {
     foodList.addEventListener('click', removeFood);
-
 }

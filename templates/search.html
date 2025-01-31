@@ -22,11 +22,13 @@
                 </select>
                 <label for="food_query">Food name:</label>
                 <input type="text" id="food_query" name="food_query" placeholder="ex. large egg" required><br><br>
-                <input type="submit" value="Search" class='button'>
+                <button> Search </button>
             </form>
         </div>
 
-        <a href="{{ url_for('index') }}" class="button">Go home</a>
+        <a href="{{ url_for('index') }}">
+            <button>Go home</button>    
+        </a>
     </main>
     <footer>
         <a href="https://www.fatsecret.com">
