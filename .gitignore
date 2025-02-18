@@ -7,3 +7,6 @@ __pycache__/fat_secret.cpython-311.pyc
 __pycache__/food.cpython-311.pyc
 __pycache__/meal.cpython-311.pyc
 notes
+venv/bin/activate.csh
+venv/bin/activate.fish
+/venv

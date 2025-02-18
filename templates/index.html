@@ -6,32 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big 3 Calorie and Macro Tracker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="../static/images/appleicon.png">
 </head>
 
 <body>
     <header>
-        <h1 id="index-header" >Big 3 Calorie and Macro tracker</h1>
+        <h1 id="index-header">Big 3 Calorie and Macro tracker</h1>
     </header>
     <main>
-        <div class="macro-container" id="daily-macros">
-            <h2>Daily Macros</h2>
-            <p id=daily-protein>Protein: 0 g</p>
-            <p id=daily-carbs>Carbs: 0 g</p>
-            <p id=daily-fat>Fat: 0 g</p>
-            <p id=daily-calories>Calories: 0 kcal</p>
-        </div>
-        <nav>
-            <a href="{{ url_for('search_food') }}">
-                <button>Food Search</button>
-            </a>
-            <a href="{{ url_for('add_food') }}">
-                <button>Manual Entry</button>
-            </a>
-            <a href="{{ url_for('show_meals') }}">
-                <button>Show foods</button>
-            </a>
-        </nav>
-    
+        <section>
+            <div class="macro-container" id="daily-macros">
+                <h2>Daily Macros</h2>
+                <p id=daily-protein>Protein: 0 g</p>
+                <p id=daily-carbs>Carbs: 0 g</p>
+                <p id=daily-fat>Fat: 0 g</p>
+                <p id=daily-calories>Calories: 0 kcal</p>
+            </div>
+            <nav>
+                <a href="{{ url_for('search_food') }}">
+                    <button>Search Foood</button>
+                </a>
+                <a href="{{ url_for('add_food') }}">
+                    <button>Manual Entry</button>
+                </a>
+                <a href="{{ url_for('show_meals') }}">
+                    <button>Show logged foods</button>
+                </a>
+            </nav>
+        </section>
+
         <div class="meal-cards">
             <h2 class="meals-h2">Meals</h2>
             <div class="card">
