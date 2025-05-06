@@ -6,16 +6,17 @@
     <title>View Meals</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/show_meals.css') }}">
 </head>
 
 <body>
     <main>
         <h1>Meals and Foods</h1>
         <div id="meals-foods-list">
-            <div class="card" >
+            <div class="card">
                 <div class="container" id="breakfast-container">
                     <p>Breakfast</p>
-                    <ul id = 'breakfast-foods'>
+                    <ul id='breakfast-foods'>
 
                     </ul>
                 </div>
@@ -23,7 +24,7 @@
             <div class="card">
                 <div class="container" id="lunch-container">
                     <p>Lunch</p>
-                    <ul id = 'lunch-foods'>
+                    <ul id='lunch-foods'>
 
                     </ul>
                 </div>
@@ -31,7 +32,7 @@
             <div class="card">
                 <div class="container" id="dinner-container">
                     <p>Dinner</p>
-                    <ul id = 'dinner-foods'>
+                    <ul id='dinner-foods'>
 
                     </ul>
                 </div>
@@ -39,13 +40,13 @@
             <div class="card">
                 <div class="container" id="snacks-container">
                     <p>Snacks</p>
-                    <ul id = 'snack-foods'>
+                    <ul id='snack-foods'>
 
                     </ul>
                 </div>
             </div>
         </div>
-        
+
     </main>
     <footer>
         <a href="{{ url_for('index') }}">

@@ -131,7 +131,7 @@ function displayFoods(meals) {
         for (let food in meals[meal]) {
             mealName = mealElements[meal];
             const foodDetails = getFoodDetails(meals[meal][food])
-            
+
             const newItem = createFoodItem(meals[meal][food].name, mealName, foodDetails);
             currentMeal.appendChild(newItem);
         }
@@ -149,8 +149,10 @@ function createFoodItem(foodName, meal, foodDetails) {
     const expandButton = createButton('expand-btn', 'fas fa-chevron-down');
     expandButton.addEventListener('click', toggleFoodDetails);
 
-    li.appendChild(deleteButton);
-    li.appendChild(expandButton);
+    const div = document.createElement('div');
+    div.appendChild(deleteButton);
+    div.appendChild(expandButton);
+    li.appendChild(div);
 
     const detailsDiv = document.createElement('div');
     detailsDiv.className = 'food-details';
@@ -191,40 +193,44 @@ async function removeFood(e) {
     }
 }
 function getFoodDetails(food) {
-            let protein = food.protein;
-            let carbs = food.carbs;
-            let fat = food.fat;
-            let fiber = food.fiber;
-            let sugar = food.sugar;
-            let sodium = food.sodium;
-            let cholesterol = food.cholesterol;
-            let saturated_fat = food.saturated_fat;
-            let calories = Math.round(total_protein * 4 + total_carbs * 4 + total_fat * 9);
+    let protein = food.protein;
+    let carbs = food.carbs;
+    let fat = food.fat;
+    let fiber = food.fiber;
+    let sugar = food.sugar;
+    let sodium = food.sodium;
+    let cholesterol = food.cholesterol;
+    let saturated_fat = food.saturated_fat;
+    let calories = Math.round(total_protein * 4 + total_carbs * 4 + total_fat * 9);
 
-            const foodDetails = {
-                'protein': protein,
-                'carbs': carbs,
-                'fat': fat,
-                'fiber': fiber,
-                'sugar': sugar,
-                'sodium': sodium,
-                'cholesterol': cholesterol,
-                'saturated_fat': saturated_fat,
-                'calories': calories,
-            }
-            return foodDetails;
+    const foodDetails = {
+        'protein': protein,
+        'carbs': carbs,
+        'fat': fat,
+        'fiber': fiber,
+        'sugar': sugar,
+        'sodium': sodium,
+        'cholesterol': cholesterol,
+        'saturated_fat': saturated_fat,
+        'calories': calories,
+    }
+    return foodDetails;
 }
+
+
 function toggleFoodDetails(e) {
     const detailsDiv = e.target.closest('li').querySelector('.food-details');
+    const icon = e.target.firstChild;
+
     if (detailsDiv.style.display === 'none') {
         detailsDiv.style.display = 'block';
-        e.target.className = 'fas fa-chevron-up'; // Change icon to show expanded details
-        console.log(e.target);
+        icon.className = 'fas fa-chevron-up'; // Change icon to show expanded details
     } else {
         detailsDiv.style.display = 'none';
-        e.target.className = 'fas fa-chevron-down'; // Chevron points down when not expanded
+        icon.className = 'fas fa-chevron-down'; // Chevron points down when not expanded
     }
 }
+
 function initShowMeals() {
     foodList.addEventListener('click', removeFood);
 }
